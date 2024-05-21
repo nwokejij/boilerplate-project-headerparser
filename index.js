@@ -24,11 +24,14 @@ app.get('/api/hello', function (req, res) {
   res.json({ greeting: 'hello API' });
 });
 app.get('/api/whoami', function(req, res){
+ const language = req.headers['accept-language'];
 
+  // Extract software information from 'User-Agent' header
+  const software = req.headers['user-agent'];
   res.json({
     ipaddress: req.ip,
-    language: req.language,
-    software: req.software
+    language: language,
+    software: software
   })
 });
 // listen for requests :)
